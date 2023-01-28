@@ -30,11 +30,11 @@ public class WhatsappRepository {
     }
     public String createUser(String username,String mobile) throws Exception{
 
-        if(userMap.containsKey(mobile)){
-            User newuser=new User(username,mobile);
+        if(!userMap.containsKey(mobile)){
+            userMap.put(username,new User(username,mobile));
             return "SUCCESS";
         }
-        throw new Exception();
+        throw new Exception("User alraedy exists");
 
 
     }
@@ -59,7 +59,7 @@ public class WhatsappRepository {
     public int createMessage(String content){
           this.messageId++;
           Message newmesage=new Message(messageId,content,new Date());
-          return messageId++;
+          return this.messageId;
     }
     public int sendMessage(Message message,User sender,Group group) throws Exception{
         if(!groupUserMap.containsKey(group)) {
