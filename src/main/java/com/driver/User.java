@@ -1,10 +1,15 @@
 package com.driver;
 
+import java.util.HashSet;
+import java.util.logging.Handler;
+
 public class User {
     private String name;
     private String mobile;
+    static HashSet<String> s;
 
     public User(String name,String mobile){
+        new HashSet<>();
         this.name=name;
         this.mobile=mobile;
     }

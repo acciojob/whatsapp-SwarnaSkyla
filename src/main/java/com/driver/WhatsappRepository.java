@@ -30,7 +30,7 @@ public class WhatsappRepository {
     }
     public String createUser(String username,String mobile) throws Exception{
 
-        if(userMap!=null && !userMap.containsKey(mobile)){
+        if(userMap.containsKey(mobile)){
             User newuser=new User(username,mobile);
             return "SUCCESS";
         }
@@ -57,7 +57,7 @@ public class WhatsappRepository {
 
     }
     public int createMessage(String content){
-
+          this.messageId++;
           Message newmesage=new Message(messageId,content,new Date());
           return messageId++;
     }
